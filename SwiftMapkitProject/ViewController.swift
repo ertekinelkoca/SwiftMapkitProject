@@ -29,6 +29,30 @@ class ViewController: UIViewController , MKMapViewDelegate , CLLocationManagerDe
         locationManager.requestWhenInUseAuthorization()
         //only manager not delegate takes place now , because just starts
         locationManager.startUpdatingLocation()
+        
+        //Users pin selection gesture recognizer
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(chooseLocation(gestureRecognizer:)))
+        gestureRecognizer.minimumPressDuration = 3
+        mapView.addGestureRecognizer(gestureRecognizer)
+        
+    }
+    
+    @objc func chooseLocation(gestureRecognizer:UILongPressGestureRecognizer){
+        // pin adding
+        
+        // To define whether is touched on screen or not
+        if gestureRecognizer.state == .began {
+            
+            let touchedPoint = gestureRecognizer.location(in: self.mapView)
+            let touchedCoordinates = self.mapView.convert(touchedPoint, toCoordinateFrom: self.mapView)
+            
+            let annotation = MKPointAnnotation()
+            annotation.title = "New Annotation"
+            annotation.coordinate = touchedCoordinates
+            annotation.subtitle = "Route Book"
+            self.mapView.addAnnotation(annotation)
+        }
+        
     }
     
     
@@ -37,7 +61,7 @@ class ViewController: UIViewController , MKMapViewDelegate , CLLocationManagerDe
         //includes longitude and latitude
         let location = CLLocationCoordinate2D.init(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
         // zoom setting.the lower the delta number , the higher the zoom
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         // to center the location and the setting of how close to zoom
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
