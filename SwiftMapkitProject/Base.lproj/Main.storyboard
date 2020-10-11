@@ -16,14 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gw2-xb-CHW">
-                                <rect key="frame" x="67" y="97" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gw2-xb-CHW">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m1z-o9-1m5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="m1z-o9-1m5" firstAttribute="bottom" secondItem="gw2-xb-CHW" secondAttribute="bottom" id="RZx-q8-UwD"/>
+                            <constraint firstItem="gw2-xb-CHW" firstAttribute="leading" secondItem="m1z-o9-1m5" secondAttribute="leading" id="axt-Da-UEX"/>
+                            <constraint firstItem="gw2-xb-CHW" firstAttribute="top" secondItem="m1z-o9-1m5" secondAttribute="top" id="bZB-7x-2FA"/>
+                            <constraint firstItem="m1z-o9-1m5" firstAttribute="trailing" secondItem="gw2-xb-CHW" secondAttribute="trailing" id="oov-ea-zpQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cr0-5A-VlK"/>
                     <connections>
