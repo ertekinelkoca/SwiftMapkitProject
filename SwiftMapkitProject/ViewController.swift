@@ -9,13 +9,20 @@ import UIKit
 import MapKit
 //to fetch users location
 import CoreLocation
+//to save info
+import CoreData
 
-class ViewController: UIViewController , MKMapViewDelegate , CLLocationManagerDelegate{
+class ViewController: UIViewController , MKMapViewDelegate , CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     //this gives users location
     var locationManager = CLLocationManager()
     
+    var choosenLatitude = Double()
+    var chosenLongitude = Double()
+    
+    @IBOutlet weak var mainText: UITextField!
+    @IBOutlet weak var commentText: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +52,13 @@ class ViewController: UIViewController , MKMapViewDelegate , CLLocationManagerDe
             
             let touchedPoint = gestureRecognizer.location(in: self.mapView)
             let touchedCoordinates = self.mapView.convert(touchedPoint, toCoordinateFrom: self.mapView)
+            choosenLatitude = touchedCoordinates.latitude
+            chosenLongitude = touchedCoordinates.longitude
             
             let annotation = MKPointAnnotation()
-            annotation.title = "New Annotation"
+            annotation.title = mainText.text
             annotation.coordinate = touchedCoordinates
-            annotation.subtitle = "Route Book"
+            annotation.subtitle = commentText.text
             self.mapView.addAnnotation(annotation)
         }
         
@@ -68,6 +77,33 @@ class ViewController: UIViewController , MKMapViewDelegate , CLLocationManagerDe
         
     }
 
-
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //NSmanaged object
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newPlace = NSEntityDescription.insertNewObject(forEntityName: "Places", into: context)
+        
+        newPlace.setValue(mainText.text, forKey: "title")
+        newPlace.setValue(commentText.text, forKey: "subtitle")
+        newPlace.setValue(choosenLatitude, forKey: "latitude")
+        newPlace.setValue(chosenLongitude, forKey: "longitude")
+        newPlace.setValue(UUID(), forKey: "id")
+        
+        do {
+            
+            try context.save()
+            
+        }
+        
+        catch{
+            print("view controller save exception")
+        }
+        
+        
+    }
+    
 }
 

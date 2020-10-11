@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047FACE325339B910065768A /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FACE225339B910065768A /* ListViewController.swift */; };
 		04FDBADA252E6C6300697BE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDBAD9252E6C6300697BE5 /* AppDelegate.swift */; };
 		04FDBADC252E6C6300697BE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDBADB252E6C6300697BE5 /* SceneDelegate.swift */; };
 		04FDBADE252E6C6300697BE5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FDBADD252E6C6300697BE5 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		047FACE225339B910065768A /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		04FDBAD6252E6C6300697BE5 /* SwiftMapkitProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMapkitProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FDBAD9252E6C6300697BE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FDBADB252E6C6300697BE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				04FDBAE7252E6C6700697BE5 /* LaunchScreen.storyboard */,
 				04FDBAEA252E6C6700697BE5 /* Info.plist */,
 				04FDBAE2252E6C6300697BE5 /* SwiftMapkitProject.xcdatamodeld */,
+				047FACE225339B910065768A /* ListViewController.swift */,
 			);
 			path = SwiftMapkitProject;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				04FDBADE252E6C6300697BE5 /* ViewController.swift in Sources */,
 				04FDBAE4252E6C6300697BE5 /* SwiftMapkitProject.xcdatamodeld in Sources */,
 				04FDBADA252E6C6300697BE5 /* AppDelegate.swift in Sources */,
+				047FACE325339B910065768A /* ListViewController.swift in Sources */,
 				04FDBADC252E6C6300697BE5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +454,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aliertekinelkoca.SwiftMapkitProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -469,7 +473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.aliertekinelkoca.SwiftMapkitProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
