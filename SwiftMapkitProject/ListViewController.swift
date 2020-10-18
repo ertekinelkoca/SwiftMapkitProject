@@ -4,17 +4,16 @@
 //
 //  Created by mac on 11.10.2020.
 //
-
 import UIKit
 import CoreData
 
-class ListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+class ListViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
    
-    
     @IBOutlet weak var tableView: UITableView!
     var titleArray = [String]()
     var idArray = [UUID]()
-    
+    var chosenTitle = ""
+    var chosenID : UUID?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,11 @@ class ListViewController: UIViewController , UITableViewDelegate , UITableViewDa
         getData()
     }
     
-    func getData(){
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(getData), name: NSNotification.Name("newPlace"), object: nil)
+    }
+    
+    @objc func getData(){
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -37,12 +40,11 @@ class ListViewController: UIViewController , UITableViewDelegate , UITableViewDa
         
         do {
             let results = try context.fetch(fetchrequest)
-            
+
             if results.count > 0{
-                
                 self.titleArray.removeAll(keepingCapacity: false)
                 self.idArray.removeAll(keepingCapacity: false)
-            
+                
                 for result in results as! [NSManagedObject] {
                     
                     if let title = result.value(forKey: "title") as? String {
@@ -56,18 +58,15 @@ class ListViewController: UIViewController , UITableViewDelegate , UITableViewDa
                 }
                 
             }
-            
-            
         } catch {
             print("ListViewController Fetch Request Exception")
         }
-       
+        
     }
     
     @objc func addButtonClicked(){
-        
+        chosenTitle = ""
         performSegue(withIdentifier:  "toViewController", sender: nil)
-        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,4 +79,17 @@ class ListViewController: UIViewController , UITableViewDelegate , UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenTitle = titleArray[indexPath.row]
+        chosenID = idArray[indexPath.row]
+        performSegue(withIdentifier: "toViewController", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toViewController" {
+            let destinationVC = segue.destination as! ViewController
+            destinationVC.selectedTitle = chosenTitle
+            destinationVC.selectedID = chosenID
+        }
+    }
 }

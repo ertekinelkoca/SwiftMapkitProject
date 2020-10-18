@@ -105,13 +105,13 @@
 			children = (
 				04FDBAD9252E6C6300697BE5 /* AppDelegate.swift */,
 				04FDBADB252E6C6300697BE5 /* SceneDelegate.swift */,
-				04FDBADD252E6C6300697BE5 /* ViewController.swift */,
 				04FDBADF252E6C6300697BE5 /* Main.storyboard */,
 				04FDBAE5252E6C6700697BE5 /* Assets.xcassets */,
 				04FDBAE7252E6C6700697BE5 /* LaunchScreen.storyboard */,
 				04FDBAEA252E6C6700697BE5 /* Info.plist */,
 				04FDBAE2252E6C6300697BE5 /* SwiftMapkitProject.xcdatamodeld */,
 				047FACE225339B910065768A /* ListViewController.swift */,
+				04FDBADD252E6C6300697BE5 /* ViewController.swift */,
 			);
 			path = SwiftMapkitProject;
 			sourceTree = "<group>";
